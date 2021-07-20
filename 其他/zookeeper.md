@@ -13,6 +13,10 @@
 > 分布式锁
 > https://mp.weixin.qq.com/s/ZqQHWLfVD1Rz1agmH3LWrg
 > https://juejin.cn/post/6844903881776824333
+> 结点信息
+> https://www.cnblogs.com/dream-to-pku/p/9513188.html
+> 数据一致性
+> https://www.cnblogs.com/zz-ksw/p/12786067.html
 
 ### 1.特性
 

@@ -67,3 +67,13 @@ SELECT  DISTINCT Num AS ConsecutiveNums FROM Logs WHERE (Id+1,Num) in (SELECT * 
 
 ```
 
+## 181.收入超过经理的员工
+
+```mysql
+#最容易想的笨比解法
+SELECT Name AS Employee From Employee e WHERE Salary > (SELECT Salary FROM Employee WHERE Id = e.ManagerId)
+#连接查询
+#连接查询
+SELECT e1.Name AS Employee FROM Employee e1 INNER JOIN Employee e2 ON e1.ManagerId = e2.Id AND e1.Salary > e2.Salary
+```
+

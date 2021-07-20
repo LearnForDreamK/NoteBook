@@ -19,6 +19,8 @@
 > 偏移量相关：https://blog.csdn.net/mengmengdastyle/article/details/82288307
 >
 > 丢失消息情况以及处理：https://blog.csdn.net/qrne06/article/details/94225070
+>
+> 解决了我poll的疑惑：https://www.jianshu.com/p/abbc09ed6703
 
 
 
@@ -42,9 +44,17 @@
 
 ### Kafka架构以及相关概念
 
-![im`age-20210530223603240](C:\Users\h'p\Desktop\个人MD笔记\images\image-20210530223603240-1622385367409.png)
+![image-20210530223603240](../../images/image-20210530223603240-1622385367409-1626656264824.png)
 
-!![`image-20210530223650174](C:\Users\h'p\Desktop\hekun个人MD笔记\images\image-20210530223650174-1622385416645.png)Producer ：消息生产者，就是向kafka broker发消息的客户端；
+![`image-20210530223650174](../../images/image-20210530223650174-1622385416645-1626656256008.png)
+
+![img](../../images/1246351-e76710596e41af87-1626656249018.png)
+
+
+
+
+
+Producer ：消息生产者，就是向kafka broker发消息的客户端；
 
 2.  Consumer ：消息消费者，向kafka broker取消息的客户端；
 3.  Topic ：可以理解为一个队列；
@@ -100,7 +110,7 @@ public int partition(String topic, Object key, byte[] keyBytes, Object value, by
 
 #### Kafka写入流程
 
-![`](C:\Users\h'p\Desktop\hekun个人MD笔记\images\image-20210530223724439.png)
+![](../../images/image-20210530223724439-1626656300767.png)
 
 1.  producer先从zookeeper的 "/brokers/.../state"节点找到该partition的leader
 
@@ -130,7 +140,7 @@ public int partition(String topic, Object key, byte[] keyBytes, Object value, by
 
 ##### Zookeeper存储结构
 
-![`](C:\Users\h'p\Desktop\hekun个人MD笔记\images\image-20210530223748215.png)
+![、](../../images/image-20210530223748215-1626656284549.png)
 
 注意：producer不在zk中注册，消费者在zk中注册。
 
