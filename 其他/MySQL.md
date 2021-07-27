@@ -59,7 +59,7 @@ MySQL返回结果集是一个增量，逐步返回的过程，查询到第一条
 
 MVCC提供高并发性，实现已提交读，可重复读两个隔离级别。通过next-key-lock避免幻读产生。还提供了以下特性。 
 
-```
+```xml
 1.插入缓冲（insert buffer）
 2.二次写(double write)
 3.自适应哈希索引(adaptive hash index)
@@ -182,3 +182,4 @@ InnoDB系统表空间包含**InnoDB数据字典**(元数据以及相关对象)�
 （mysql探秘-四）https://mp.weixin.qq.com/s?__biz=Mzg2NjE5NDQyOA==&mid=2247483785&idx=1&sn=e40537c048f0880daf441350c695ffc6&source=41#wechat_redirect
 （mysql探秘-七）https://juejin.cn/post/6844903735500472333
 和很多博客上的内容
+

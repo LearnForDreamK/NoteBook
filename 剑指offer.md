@@ -152,3 +152,48 @@ class Solution {
 }
 ```
 
+## 07.重建二叉树
+
+
+
+## 12.矩阵中的路径
+
+```java
+    public boolean exist(char[][] board, String word) {
+        //回溯        
+        for(int i = 0 ; i < board.length ;i++){
+            for(int j = 0; j < board[0].length ;j++){
+                if(findAns(board,word.toCharArray(),0,i,j)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean findAns(char[][] board , char[] word , int currentIndex , int b1 , int b2){
+        if(currentIndex == word.length){
+            return true;
+        }
+        if(b1 < 0 || b1 > board.length-1 || b2 < 0 || b2 > board[0].length-1){
+            return false;
+        }
+        if(board[b1][b2] == '-'){
+            return false;
+        }
+
+        if(board[b1][b2] == word[currentIndex]){
+            char tmp = board[b1][b2];
+            board[b1][b2] = '-';
+            //上下左右
+            boolean res = findAns(board,word,currentIndex+1,b1,b2-1) ||
+            findAns(board,word,currentIndex+1,b1,b2+1) ||
+            findAns(board,word,currentIndex+1,b1-1,b2) ||
+            findAns(board,word,currentIndex+1,b1+1,b2) ;
+            board[b1][b2] = tmp;
+            return res;
+        }
+        return false;
+    }
+```
+

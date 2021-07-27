@@ -322,7 +322,9 @@ new ServerBootstrap()
         @Override
         protected void initChannel(NioSocketChannel ch)  {
             ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
+            //重载方法 用参数的工人进行处理
             ch.pipeline().addLast(normalWorkers,"myhandler",
+              //这个适配器实现了ChannelHandler接口
               new ChannelInboundHandlerAdapter() {
                 @Override
                 public void channelRead(ChannelHandlerContext ctx, Object msg) {
