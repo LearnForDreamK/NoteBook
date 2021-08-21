@@ -77,3 +77,28 @@ SELECT Name AS Employee From Employee e WHERE Salary > (SELECT Salary FROM Emplo
 SELECT e1.Name AS Employee FROM Employee e1 INNER JOIN Employee e2 ON e1.ManagerId = e2.Id AND e1.Salary > e2.Salary
 ```
 
+## 182.查找重复的电子邮箱
+
+```mysql
+SELECT Email FROM (SELECT Email , count(*) as c FROM Person GROUP BY Email HAVING c > 1) as t 
+
+SELECT Email FROM Person GROUP BY Email HAVING count(*) > 1
+```
+
+## 183.从不订购的客户
+
+```mysql
+SELECT Name as Customers FROM (SELECT Name,CustomerId FROM Customers a LEFT JOIN Orders b ON a.Id = b.CustomerId) as t
+WHERE CustomerId IS NULL;
+```
+
+## 184.部门工资最高的员工
+
+```mysql
+#找到每个部门最高的工资
+#把员工表 部门表 和最高工资表用三个内连接连接起来
+SELECT d.Name as Department,e.Name as Employee,e.Salary FROM Employee e INNER JOIN Department d INNER JOIN
+(SELECT max(Salary) as m,DepartmentId FROM Employee GROUP BY DepartmentId) as c
+ON e.DepartmentId = d.Id AND e.Salary = c.m AND e.DepartmentId = c.DepartmentId;
+```
+
